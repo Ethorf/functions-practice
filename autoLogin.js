@@ -11,7 +11,7 @@ const autoLogin = async () => {
 	await page.setViewport({ width: 1566, height: 768 });
 	await page.click('#login_button');
 	await page.type('#standard-basic-email', 'ethorf@gmail.com');
-	await page.type('#standard-password-input', 'tittyhos123');
+	await page.type('#standard-password-input', '<password>');
 	await page.click('#login_submit_button');
 };
 
