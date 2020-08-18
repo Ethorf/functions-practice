@@ -10,12 +10,10 @@ const charCount1 = (str) => {
 			result[char] = 1;
 		}
 	}
-	// return Object.entries(result).sort((a, b) => b[0].localeCompare(a[0])).length - 1;
+
 	return Object.entries(result).sort((a, b) => b[0].localeCompare(a[0]))[0][0];
 
 	//okay so OBject.entries basically turns the object into an array w/ key values being represented by indexes 0,1
-
-	return resultKey;
 };
 
 //Refactor w/ for of
