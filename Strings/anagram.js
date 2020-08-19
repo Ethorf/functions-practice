@@ -59,4 +59,6 @@ function anagram3(first, second) {
 //this one works really well with sorting
 // this would also work for pangram but just checking against abc.. etc
 // console.log(anagram2('trooa', 'root'));
-console.log(anagram2('aaz', 'zza'));
+// console.log(anagram2('aaz', 'zza'));
+
+console.log('jim'.split('').reverse().join(''));
