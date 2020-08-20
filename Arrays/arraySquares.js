@@ -12,7 +12,7 @@ const same = (arr1, arr2) => {
 		//Had totally forgotten that ** is an exponent
 		//so here we just checking if this squared unit exists at all in our second array and returning false if not
 		//reminder that .indexOf returns -1
-		let correctIndex = arr2.indexOf(arr1[i] ** 2); //I also hadn't thought of .indexOf as being a check before, without having to use a loop,
+		let correctIndex = arr2.indexOf(arr1[i] ** 2); //I also hadn't thought of .indexOf as being a check before, without having to use an explicit loop, though it is a loop
 		//though this may be primitive it is at least something to be aware of
 		if (correctIndex === -1) {
 			return false;
@@ -43,11 +43,12 @@ const same2 = (arr1, arr2) => {
 	}
 
 	for (let key in frequencyCounter1) {
-		//this one checks if the exponentiated key is in the
+		//this one checks if the exponentiated key is in the second obj
 		if (!(key ** 2 in frequencyCounter2)) {
 			return false;
 		}
-		//
+		//this one checks for duplicates
+
 		if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
 			return false;
 		}
