@@ -14,8 +14,6 @@ const isSubsequence2 = (target, str) => {
 	let j = 0;
 
 	for (let i = 0; i < str.length - 1; i++) {
-		console.log(`target index is:${targetArr[j]} checking index is:${str[i]}`);
-
 		if (targetArr[j] === str[i]) {
 			j++;
 		}
@@ -26,7 +24,11 @@ const isSubsequence2 = (target, str) => {
 	return false;
 };
 
-//online solution
+//online solution, pretty much the same as mine, except he used a while loop, and i use a for
+// and he declared both iterative variables outside of the initial declaration
+//seemed p close to me, don't forget that a while loop is an option
+//but it's still a loop so complexity wise it's the same
+//thought it may be a litlte easier to conceptualize?
 function isSubsequence3(target, str) {
 	var i = 0;
 	var j = 0;
