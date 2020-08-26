@@ -5,7 +5,8 @@ const minSubArrayLength = (arr, targetSum) => {
 	let minArray = [];
 	let tempArray = [];
 	let tempSum = 0;
-	let windowStart = 0;
+	let windowLeft = 0;
+	let windowRight = 0;
 
 	//Okay so I guess this is just setting the initial sum // window
 	for (let i = 0; i < arr.length; i++) {
@@ -25,7 +26,32 @@ const minSubArrayLength = (arr, targetSum) => {
 	return minArray;
 };
 
+const minSubArrayLength2 = (arr, targetSum) => {
+	let minArray = [];
+	let tempArray = [];
+	let tempSum = 0;
+	let leftWindow = 0;
+	let rightWindow = 1;
+
+	if (arr.slice().sort((a, b) => b - a)[0] >= targetSum) return 1;
+
+	while (rightWindow < arr.length) {
+		for (let i = leftWindow; i <= rightWindow; i++) {
+			console.log(`arr[i] is ${arr[i]}`);
+			tempArray.push(arr[i]);
+			tempSum += arr[i];
+		}
+		if (tempSum >= targetSum) {
+			return tempArray.length;
+		} else {
+			rightWindow++;
+		}
+	}
+
+	return tempArray;
+};
+
 let arr1 = [2, 3, 1, 2, 4, 3]; //target = 7 /// 2 because [4,3] is the smallest subarray
 let arr2 = [2, 1, 6, 5, 4]; // target 9 /// 2 because [5,4] is the smallest subarray
 
-console.log(minSubArrayLength(arr1, 7));
+console.log(minSubArrayLength2(arr1, 7));
