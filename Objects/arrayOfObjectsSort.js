@@ -5,4 +5,4 @@ let arr1 = [
 	{ name: 'Andogo', words: '13' }
 ];
 
-console.log(arr1.sort((a, b) => a.words - b.words).reverse());
+console.log(arr1.sort((a, b) => a.words - b.words));
