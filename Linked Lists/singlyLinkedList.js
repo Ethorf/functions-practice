@@ -148,7 +148,7 @@ class SinglyLinkedList {
     // It just runs 5 times?? (/length)
     for (let i = 0; i < this.length; i++) {
       // So this starts at the the original 0 index (node)
-      // Then sets "next" to the value at index 1
+      // Then sets "next" to the value at index 1, i
       next = node.next;
       node.next = prevNode;
       prevNode = node;
