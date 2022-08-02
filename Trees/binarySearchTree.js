@@ -21,6 +21,7 @@ class BinarySearchTree {
       let current = this.root;
       while (true) {
         if (value === current.value) return undefined;
+        // Left side
         if (value < current.value) {
           if (current.left === null) {
             current.left = newNode;
@@ -28,6 +29,7 @@ class BinarySearchTree {
           } else {
             current = current.left;
           }
+          //  Right Side
         } else if (value > current.value) {
           if (current.right === null) {
             current.right = newNode;
@@ -39,9 +41,31 @@ class BinarySearchTree {
       }
     }
   }
+
+  insertRecursive(value) {
+    const node = new Node(value);
+    if (!this.root) {
+      this.root = node;
+      return this;
+    }
+
+    const inserted = (value, current = this.root) => {
+      if (value > current.value) {
+        if (!current.right) {
+          current.right = node;
+        } else return inserted(value, current.right);
+      } else {
+        if (!current.left) {
+          current.left = node;
+        } else return inserted(value, current.left);
+      }
+      return this;
+    };
+    return inserted(data);
+  }
   find(value) {
     if (!this.root) return false;
-    let curr = this.root;
+    let current = this.root;
     let found = false;
 
     while (!found && current) {
@@ -55,6 +79,34 @@ class BinarySearchTree {
     }
     if (!found) return undefined;
     return current;
+  }
+  BFS() {
+    let node = this.root;
+    let data = [];
+    let q = [];
+    q.push(node);
+    // Random note, if you negate an empty array in javascript, it's still truthy.
+    while (q.length) {
+      node = q.shift();
+      data.push(node);
+      if (node.left) q.push(node.left);
+      if (node.right) q.push(node.right);
+    }
+    return data;
+  }
+
+  BFSRecursive(queue = [this.root], data = []) {
+    // They love these default params
+    const [node] = queue;
+
+    if (!node) return data;
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+
+    queue.shift();
+    data.push(node.value);
+
+    return this.BFS(queue, data);
   }
 }
 
