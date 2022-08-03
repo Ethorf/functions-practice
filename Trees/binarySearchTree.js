@@ -108,6 +108,42 @@ class BinarySearchTree {
 
     return this.BFS(queue, data);
   }
+  DFSPreOrder(data = []) {
+    let current = this.root;
+
+    const traverse = (node) => {
+      data.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    };
+    traverse(current);
+    return data;
+  }
+  DFSPostOrder(data = []) {
+    let current = this.root;
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
+    };
+    traverse(current);
+    return data;
+  }
+
+  DFSInOrder(data = []) {
+    // Basically creates a sorted version of the tree output
+    let current = this.root;
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+
+      if (node.right) traverse(node.right);
+    };
+    traverse(current);
+    return data;
+  }
 }
 
 // BST's are usually o(log n) but not guaranteed
