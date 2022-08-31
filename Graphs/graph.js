@@ -21,6 +21,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
   DFTRecursive(vertex) {
+    // Depth first in this context means pick a starting node and visit one of it's neighbours, and then all that nodes neighbours etc before returning to start node
     let results = [];
     let visited = {};
     // This solves the scoping problem with "this"
@@ -37,6 +38,46 @@ class Graph {
     })(vertex);
 
     return results;
+  }
+
+  DFTIterative(start) {
+    let s = [start];
+    let visited = {};
+    visited[start] = true;
+    let result = [];
+    let currVertex;
+
+    while (s.length) {
+      currVertex = s.pop();
+      result.push(currVertex);
+      this.adjacencyList[currVertex].map((x) => {
+        if (!visted[x]) {
+          visited[x] = true;
+        }
+      });
+    }
+    return result;
+  }
+  BFT(start) {
+    // REMINDER - Queue's are first in first out
+    // Breadth first in this context means visit all of a vertex's neighbours first before visiting it's neighbours neighbours
+    let q = [start];
+    let result = [];
+    let visited = {};
+    let currVertex;
+
+    while (q.length) {
+      currVertex = q.shift();
+      result.push(currVertex);
+      this.adjacencyList[currVertex].map((neighbour) => {
+        if (!visted[neighbour]) {
+          visited[neighbour] = true;
+          q.push(neighbour);
+        }
+      });
+    }
+
+    return result;
   }
 }
 
